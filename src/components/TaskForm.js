@@ -15,7 +15,6 @@ const FormStyle = {
 
 function TaskForm({ title: titleProp }) {
   const [title, setTitle] = React.useState("");
-  const [taskId, setTaskId] = React.useState("");
   const [editedTask, setEditedTask] = React.useState(false);
   const [formValues, setFormValues] = React.useState({
     title: "",
@@ -23,11 +22,12 @@ function TaskForm({ title: titleProp }) {
   });
 
   const router = useRouter();
+  const { id: taskId } = router.query;
 
   const findTaskById = async () => {
     const task = await axios.get(`/api/tasks/${taskId}`);
-    setTitle(task.data[0].title);
-    setFormValues(task.data[0]);
+    setTitle(task.data.title);
+    setFormValues(task.data);
     setEditedTask(true);
   };
 
@@ -49,7 +49,6 @@ function TaskForm({ title: titleProp }) {
     if (router.query.id === undefined) {
       setTitle(titleProp);
     } else if (router.query.id !== undefined) {
-      setTaskId(router.query.id);
       findTaskById();
     }
   }, [router.query.id]);
