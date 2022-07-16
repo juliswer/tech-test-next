@@ -22,8 +22,7 @@ export default async function hanlderId(req, res) {
     case "PUT":
       try {
         const task = await Task.findByIdAndUpdate(id, body, {
-          new: true,
-          runValidators: true,
+          new: true
         });
         if (!task) return res.status(404).json({ error: "Task not found" });
         return res.status(200).json(task);
@@ -41,6 +40,8 @@ export default async function hanlderId(req, res) {
     default:
       return res.status(405).json({
         error: "Method not allowed",
+        method,
+        msg: "If this is an error, please report it to the developer",
       });
   }
 }
