@@ -1,15 +1,20 @@
 import React from "react";
 import Switch from "@mui/material/Switch";
 import axios from "axios";
-import { Button, FormControlLabel, FormGroup, Paper } from "@mui/material";
+import { Button, FormControlLabel, FormGroup, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-// import TimeAgo from "javascript-time-ago";
-import ReactTimeAgo from "react-time-ago";
 import TimeAgo from "react-timeago";
-import en from "javascript-time-ago/locale/en.json";
 import { useRouter } from "next/router";
+
+const TaskStyles = {
+  background: "rgba(204, 204, 204, 0.40)",
+  borderRadius: "16px",
+  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+  backdropFilter: "blur(7.1px)",
+  padding: "0px 10px 10px 10px",
+};
 
 function Task({ task }) {
   const router = useRouter();
@@ -63,22 +68,25 @@ function Task({ task }) {
   };
 
   return (
-    <Paper elevation={2} style={{ padding: "0 10px 10px 10px" }}>
-      <h1>{task.title}</h1>
-      <p>{task.description}</p>
-      <p>
+    <Paper elevation={2} style={TaskStyles}>
+      <Typography variant="h4" component="h1" style={{fontWeight: "bold", color: "#fff"}}>{task.title}</Typography>
+      <Typography variant="h6" component="p" style={{color: "#e1e1e1"}}>{task.description}</Typography>
+      <Typography variant="p" component="p" style={{fontStyle: "italic", fontSize: "15px", color: "#ccc", textAlign: "right", marginTop: "5px"}}>
         {wasEdited ? "Edited " : "Created "} <TimeAgo date={showDateTask} />
-      </p>
+      </Typography>
       <FormGroup>
         <FormControlLabel
           control={
             <Switch
               checked={checked}
               label="Finished"
+              color="warning"
               onChange={handleCheckChange}
+              style={{color: "#c20070"}}
             />
           }
           label={checked ? "Unfinished" : "Finished"}
+          style={{color: "#fff"}}
         />
       </FormGroup>
       <Box
@@ -89,14 +97,19 @@ function Task({ task }) {
         }}
       >
         <Button
-          variant="outlined"
+          variant="contained"
           color="error"
           startIcon={<DeleteIcon />}
           onClick={handleDelete}
         >
           Delete
         </Button>
-        <Button variant="outlined" color="primary" startIcon={<EditIcon />}>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<EditIcon />}
+          onClick={() => router.push(`/update/${task._id}`)}
+        >
           Edit
         </Button>
       </Box>

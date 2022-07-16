@@ -7,13 +7,19 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useAuth0 } from "@auth0/auth0-react";
+import AddIcon from '@mui/icons-material/Add';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import {useRouter} from 'next/router'
 
 function Header() {
   const { loginWithRedirect } = useAuth0();
 
+  const router = useRouter();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{background: "#761b50"}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -27,9 +33,15 @@ function Header() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             JSwerdlin Tasks
           </Typography>
-          <Button color="inherit" onClick={() => loginWithRedirect()}>
+          <Button color="inherit" startIcon={<AddIcon />} onClick={() => router.push("/create")}>
+            Create
+          </Button>
+          <Button color="inherit" startIcon={<LoginIcon />} onClick={() => loginWithRedirect()}>
             Login
           </Button>
+          {/* <Button color="inherit" startIcon={<LogoutIcon />} onClick={() => loginWithRedirect()}>
+            Logout
+          </Button> */}
         </Toolbar>
       </AppBar>
     </Box>

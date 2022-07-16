@@ -30,7 +30,7 @@ function App() {
         >
           <Grid container>
             {tasks.map((task) => (
-              <Grid key={task._id} xs={3} style={{ marginInline: "5px" }}>
+              <Grid key={task._id} xs={12} md={6} lg={3} style={{ marginInline: "5px" }}>
                 <Task task={task} />
               </Grid>
             ))}

@@ -9,18 +9,14 @@ function Layout({ children }) {
     <>
       <Header />
       <Container style={{maxWidth: "85vw"}}>{children}</Container>
-      <Fab 
-        color="primary"
+      <Fab
         aria-label="add"
         variant="extended"
         style={{ position: "fixed", bottom: "20px", right: "20px" }}
       >
         <GitHubIcon style={{marginRight: "5px"}} />
-        Check Code
+        Check out Code
       </Fab>
-      <footer>
-        <p>&copy; 2020</p>
-      </footer>
     </>
   );
 }
