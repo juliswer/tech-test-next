@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import axios from "axios";
 import Task from "../components/Task";
 import Grid from "@mui/material/Grid";
+import Box from '@mui/material/Box';
 
 function App() {
   const [tasks, setTasks] = React.useState([]);
@@ -18,15 +19,23 @@ function App() {
 
   return (
     <div>
-      <Layout>
-        <Grid container spacing={2}>
-          {tasks.map((task) => (
-            <Grid key={task._id} xs={3} style={{margin: "10px"}}>
-              <Task task={task} />
-            </Grid>
-          ))}
-        </Grid>
-      </Layout>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "20px"
+          }}
+        >
+          <Grid container>
+            {tasks.map((task) => (
+              <Grid key={task._id} xs={3} style={{ marginInline: "5px" }}>
+                <Task task={task} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
     </div>
   );
 }
