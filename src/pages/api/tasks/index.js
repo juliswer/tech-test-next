@@ -1,13 +1,10 @@
-// import Task from "models/Task";
-// import {dbConnect} from "../../../utils/mongoose"
 import { dbConnect } from "../../../utils/mongoose";
 import Task from "../../../models/Task";
 
+dbConnect();
+
 export default async function handler(req, res) {
-
   const { method, body } = req;
-
-  dbConnect();
 
   switch (method) {
     case "GET":
@@ -26,10 +23,10 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: error });
       }
     default:
-      return res.status(405).json({ 
+      return res.status(405).json({
         error: "Method not allowed",
         method,
-        msg: "If this is an error, please report it to the developer"
-    });
+        msg: "If this is an error, please report it to the developer",
+      });
   }
 }
