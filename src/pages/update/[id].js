@@ -3,7 +3,7 @@ import TaskForm from '../../components/TaskForm'
 
 function UpdateTask() {
   return (
-    <div style={{display: "flex", justifyContent: "center"}}>
+    <div style={{display: "flex", justifyContent: "center", marginTop: "17%"}}>
         <TaskForm />
     </div>
   )

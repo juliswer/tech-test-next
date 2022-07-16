@@ -79,10 +79,9 @@ function Task({ task }) {
           control={
             <Switch
               checked={checked}
-              label="Finished"
               color="warning"
               onChange={handleCheckChange}
-              style={{color: "#c20070"}}
+              style={{color: "#ccc"}}
             />
           }
           label={checked ? "Unfinished" : "Finished"}

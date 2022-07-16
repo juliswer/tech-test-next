@@ -12,6 +12,7 @@ function Layout({ children }) {
       <Fab
         aria-label="add"
         variant="extended"
+        href="https://github.com/juliswer/tech-test-next"
         style={{ position: "fixed", bottom: "20px", right: "20px" }}
       >
         <GitHubIcon style={{marginRight: "5px"}} />
