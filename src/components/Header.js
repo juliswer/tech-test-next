@@ -36,7 +36,7 @@ function Header() {
             {router.pathname === "/" ? <HomeIcon /> : <ArrowBackIcon />}
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            JSwerdlin Tasks
+            Tasks JS
           </Typography>
           <LoginButton />
         </Toolbar>

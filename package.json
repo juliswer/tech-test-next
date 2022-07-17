@@ -26,7 +26,8 @@
     "react-hot-toast": "^2.3.0",
     "react-time-ago": "^7.1.9",
     "react-timeago": "^7.1.0",
-    "three": "^0.142.0"
+    "three": "^0.142.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "eslint": "8.19.0",

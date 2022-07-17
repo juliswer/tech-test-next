@@ -24,11 +24,15 @@ function LoginButton() {
 
   const setUserData = () => {
     if (user) {
+      const generatedToken = Date.now();
+
       const bodyToSave = {
         name: user.name,
         email: user.email,
         picture: user.picture,
+        accessToken: generatedToken,
       };
+
       localStorage.setItem("user", JSON.stringify(bodyToSave));
     }
   };
