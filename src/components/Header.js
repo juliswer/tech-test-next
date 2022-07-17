@@ -44,13 +44,13 @@ function Header() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             JSwerdlin Tasks
           </Typography>
-          <Button
+          {/* <Button
             color="inherit"
             startIcon={<AddIcon />}
             onClick={() => router.push("/create")}
           >
             Create
-          </Button>
+          </Button> */}
           <Button
             color="inherit"
             startIcon={<LoginIcon />}
