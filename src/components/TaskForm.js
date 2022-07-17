@@ -16,6 +16,7 @@ const FormStyle = {
 
 function TaskForm({ title: titleProp }) {
   const [title, setTitle] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
   const [editedTask, setEditedTask] = React.useState(false);
   const [formValues, setFormValues] = React.useState({
     title: "",
@@ -35,7 +36,9 @@ function TaskForm({ title: titleProp }) {
   const handleSubmit = async () => {
     if (editedTask) {
       try {
+        setIsLoading(true)
         await axios.put(`/api/tasks/${taskId}`, formValues);
+        setIsLoading(false)
         toast.success("Task updated successfully!", {
           position: "top-center",
           duration: 5000,
@@ -131,7 +134,7 @@ function TaskForm({ title: titleProp }) {
           color="success"
           onClick={handleSubmit}
         >
-          Submit
+          {isLoading ? "Submiting" : "Submit"}
         </Button>
       </Paper>
     </>

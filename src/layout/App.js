@@ -3,7 +3,8 @@ import Layout from "./Layout";
 import axios from "axios";
 import Task from "../components/Task";
 import Grid from "@mui/material/Grid";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
+import TaskForm from "../components/TaskForm";
 
 function App() {
   const [tasks, setTasks] = React.useState([]);
@@ -19,23 +20,41 @@ function App() {
 
   return (
     <div>
+      {tasks.length > 0 ? (
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "20px"
+            marginTop: "20px",
           }}
         >
           <Grid container>
             {tasks.map((task) => (
-              <Grid key={task._id} xs={12} md={6} lg={3} style={{ marginInline: "5px" }}>
+              <Grid
+                key={task._id}
+                xs={12}
+                md={6}
+                lg={3}
+                style={{ marginInline: "5px" }}
+              >
                 <Task task={task} />
               </Grid>
             ))}
           </Grid>
         </Box>
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "17%",
+          }}
+        >
+          <TaskForm title={"There are no tasks! You can start writing one!"} />
+        </div>
+      )}
     </div>
   );
 }
