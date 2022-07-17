@@ -4,7 +4,6 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "../components/LoginButton.js";
 import { useRouter } from "next/router";
 import HomeIcon from "@mui/icons-material/Home";
