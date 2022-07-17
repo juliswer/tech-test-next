@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import toast from "react-hot-toast";
 
 const FormStyle = {
   background: "rgba(204, 204, 204, 0.40)",
@@ -31,11 +32,35 @@ function TaskForm({ title: titleProp }) {
     setEditedTask(true);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (editedTask) {
-      axios.put(`/api/tasks/${taskId}`, formValues);
+      try {
+        await axios.put(`/api/tasks/${taskId}`, formValues);
+        toast.success("Task updated successfully!", {
+          position: "top-center",
+          duration: 5000,
+        });
+      } catch (error) {
+        console.log(error);
+        toast.error("Error updating task!", {
+          position: "top-center",
+          duration: 5000,
+        });
+      }
     } else {
-      axios.post("/api/tasks", formValues);
+      try {
+        await axios.post("/api/tasks", formValues);
+        toast.success("Task created successfully!", {
+          position: "top-center",
+          duration: 5000,
+        });
+      } catch (error) {
+        console.log(error);
+        toast.error("Error creating task!", {
+          position: "top-center",
+          duration: 5000,
+        });
+      }
     }
     setFormValues({
       title: "",
