@@ -16,7 +16,7 @@ function Layout({ children }) {
         style={{ position: "fixed", bottom: "20px", right: "20px" }}
       >
         <GitHubIcon style={{marginRight: "5px"}} />
-        Check out Code
+        View Source Code
       </Fab>
     </>
   );

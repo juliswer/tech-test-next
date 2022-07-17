@@ -15,7 +15,7 @@ function App() {
 
   React.useEffect(() => {
     getTasks();
-  }, []);
+  }, [tasks]);
 
   return (
     <div>

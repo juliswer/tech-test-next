@@ -21,7 +21,7 @@ const TaskStyles = {
   boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
   backdropFilter: "blur(7.1px)",
   padding: "0px 10px 10px 10px",
-  marginBottom: "10px"
+  marginBottom: "10px",
 };
 
 function Task({ task }) {
@@ -75,7 +75,7 @@ function Task({ task }) {
         });
       } else {
         toast.success(
-          `Task ${task.title} was undone! I'm sure it will be done soon!`,
+          `Task "${task.title}" was undone! I'm sure it will be done soon!`,
           {
             position: "bottom-left",
             duration: 5000,
@@ -92,9 +92,19 @@ function Task({ task }) {
   };
 
   const handleDelete = async () => {
-    const res = await axios.delete(`/api/tasks/${task._id}`);
-    router.reload(window.location.pathname);
-    console.log(res);
+    try {
+      await axios.delete(`/api/tasks/${task._id}`);
+      toast.success(`Task "${task.title}" was deleted!`, {
+        position: "bottom-left",
+        duration: 5000,
+      });
+    } catch (error) {
+      console.log(error);
+      toast.error("Error deleting task!", {
+        position: "bottom-left",
+        duration: 5000,
+      });
+    }
   };
 
   return (
