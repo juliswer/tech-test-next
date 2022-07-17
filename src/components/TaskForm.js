@@ -1,9 +1,25 @@
+// ? Import React
 import React from "react";
+
+// ? Import Next Hooks
 import { useRouter } from "next/router";
+
+// ? Import axios to make async https petitions
 import axios from "axios";
-import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
+
+// ? Import Material UI Components
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+
+// ? Import Library to make toasts
 import toast from "react-hot-toast";
 
+// ? Import Loading Component
+import Loading from "./Loading";
+
+// * Form Styles
 const FormStyle = {
   background: "rgba(204, 204, 204, 0.40)",
   borderRadius: "16px",
@@ -14,7 +30,9 @@ const FormStyle = {
   padding: "10px",
 };
 
+// * Form Component
 function TaskForm({ title: titleProp }) {
+  // useStates to the Form Component
   const [title, setTitle] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
   const [editedTask, setEditedTask] = React.useState(false);
@@ -23,22 +41,33 @@ function TaskForm({ title: titleProp }) {
     description: "",
   });
 
+  // Initialize Router
   const router = useRouter();
+
+  // Get id from Router Query (url)
   const { id: taskId } = router.query;
 
+  // Logic to handle the form values
   const findTaskById = async () => {
-    const task = await axios.get(`/api/tasks/${taskId}`);
-    setTitle(task.data.title);
-    setFormValues(task.data);
-    setEditedTask(true);
+    try {
+      setIsLoading(true);
+      const task = await axios.get(`/api/tasks/${taskId}`);
+      setIsLoading(false);
+      setTitle(task.data.title);
+      setFormValues(task.data);
+      setEditedTask(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  // Logic to submit the form
   const handleSubmit = async () => {
     if (editedTask) {
       try {
-        setIsLoading(true)
+        setIsLoading(true);
         await axios.put(`/api/tasks/${taskId}`, formValues);
-        setIsLoading(false)
+        setIsLoading(false);
         toast.success("Task updated successfully!", {
           position: "top-center",
           duration: 5000,
@@ -73,6 +102,7 @@ function TaskForm({ title: titleProp }) {
     router.push("/");
   };
 
+  // useEffect to set the title
   React.useEffect(() => {
     if (router.query.id === undefined) {
       setTitle(titleProp);
@@ -81,62 +111,68 @@ function TaskForm({ title: titleProp }) {
     }
   }, [router.query.id]);
 
+
+  // * Render the Form Component
   return (
     <>
-      <Paper style={FormStyle}>
-        <Typography
-          variant="h4"
-          component="h4"
-          style={{
-            textAlign: "center",
-            color: "#fff",
-            fontWeight: "bold",
-            marginBottom: "15px",
-          }}
-        >
-          {title}
-        </Typography>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <TextField
-            label="Title"
-            variant="standard"
-            color="info"
-            InputProps={{
-              style: {
-                color: "#fff",
-              },
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Paper style={FormStyle}>
+          <Typography
+            variant="h4"
+            component="h4"
+            style={{
+              textAlign: "center",
+              color: "#fff",
+              fontWeight: "bold",
+              marginBottom: "15px",
             }}
-            required
-            value={formValues.title}
-            onChange={(e) =>
-              setFormValues({ ...formValues, title: e.target.value })
-            }
-          />
-          <TextField
-            label="Description"
-            variant="standard"
-            required
-            color="info"
-            InputProps={{
-              style: {
-                color: "#fff",
-              },
-            }}
-            value={formValues.description}
-            onChange={(e) =>
-              setFormValues({ ...formValues, description: e.target.value })
-            }
-          />
-        </div>
-        <Button
-          style={{ width: "100%", marginTop: "20px" }}
-          variant="contained"
-          color="success"
-          onClick={handleSubmit}
-        >
-          {isLoading ? "Submiting" : "Submit"}
-        </Button>
-      </Paper>
+          >
+            {title}
+          </Typography>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <TextField
+              label="Title"
+              variant="standard"
+              color="info"
+              InputProps={{
+                style: {
+                  color: "#fff",
+                },
+              }}
+              required
+              value={formValues.title}
+              onChange={(e) =>
+                setFormValues({ ...formValues, title: e.target.value })
+              }
+            />
+            <TextField
+              label="Description"
+              variant="standard"
+              required
+              color="info"
+              InputProps={{
+                style: {
+                  color: "#fff",
+                },
+              }}
+              value={formValues.description}
+              onChange={(e) =>
+                setFormValues({ ...formValues, description: e.target.value })
+              }
+            />
+          </div>
+          <Button
+            style={{ width: "100%", marginTop: "20px" }}
+            variant="contained"
+            color="success"
+            onClick={handleSubmit}
+          >
+            {isLoading ? "Submiting" : "Submit"}
+          </Button>
+        </Paper>
+      )}
     </>
   );
 }
