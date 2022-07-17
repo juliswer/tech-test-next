@@ -52,7 +52,7 @@ function Task({ task }) {
   React.useEffect(() => {
     checkEdited();
     dateToShow();
-  }, [wasEdited]);
+  }, [wasEdited, task.createdAt, task.updatedAt]);
 
   React.useEffect(() => {
     if (task.done) {
@@ -68,14 +68,14 @@ function Task({ task }) {
       });
       if (event.target.checked === true) {
         toast.success(`Great! Task "${task.title}" was finished!`, {
-          position: "bottom-left",
+          position: "bottom-center",
           duration: 5000,
         });
       } else {
         toast.success(
           `Task "${task.title}" was undone! I'm sure it will be done soon!`,
           {
-            position: "bottom-left",
+            position: "bottom-center",
             duration: 5000,
           }
         );
@@ -83,7 +83,7 @@ function Task({ task }) {
     } catch (error) {
       console.log(error);
       toast.error("Error finishing task!", {
-        position: "bottom-left",
+        position: "bottom-center",
         duration: 5000,
       });
     }
@@ -93,13 +93,13 @@ function Task({ task }) {
     try {
       await axios.delete(`/api/tasks/${task._id}`);
       toast.success(`Task "${task.title}" was deleted!`, {
-        position: "bottom-left",
+        position: "bottom-center",
         duration: 5000,
       });
     } catch (error) {
       console.log(error);
       toast.error("Error deleting task!", {
-        position: "bottom-left",
+        position: "bottom-center",
         duration: 5000,
       });
     }

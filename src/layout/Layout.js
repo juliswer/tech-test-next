@@ -3,6 +3,7 @@ import Container from "@mui/material/Container";
 import Header from "../components/Header";
 import Fab from '@mui/material/Fab';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import SpeedDialComponent from "../components/SpeedDial";
 
 function Layout({ children }) {
   return (
@@ -18,6 +19,7 @@ function Layout({ children }) {
         <GitHubIcon style={{marginRight: "5px"}} />
         View Source Code
       </Fab>
+      <SpeedDialComponent />
     </>
   );
 }
