@@ -1,20 +1,32 @@
+// ? Import React
 import React from "react";
-import Switch from "@mui/material/Switch";
-import axios from "axios";
-import {
-  Button,
-  FormControlLabel,
-  FormGroup,
-  Paper,
-  Typography,
-} from "@mui/material";
-import { Box } from "@mui/system";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import TimeAgo from "react-timeago";
+
+// ? Import Next Hooks
 import { useRouter } from "next/router";
+
+// ? Import axios to handle async code
+import axios from "axios";
+
+// ? Import Material UI Components
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import FormGroup from "@mui/material/FormGroup";
+import Button from "@mui/material/Button";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+import { Box } from "@mui/system";
+
+// ? Import TimeAgo library
+import TimeAgo from "react-timeago";
+
+// ? Import Toast Library
 import toast from "react-hot-toast";
 
+// ? Import Material UI Icons
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+
+// * Styles for Task component
 const TaskStyles = {
   background: "rgba(204, 204, 204, 0.40)",
   borderRadius: "16px",
@@ -24,13 +36,17 @@ const TaskStyles = {
   marginBottom: "10px",
 };
 
+// * Task Component
 function Task({ task }) {
+  // Initialize Router
   const router = useRouter();
 
+  // States for the Task component
   const [checked, setChecked] = React.useState(false);
   const [wasEdited, setWasEdited] = React.useState(false);
   const [showDateTask, setShowDateTask] = React.useState("");
 
+  // Logic to handle the wasEdited state
   const checkEdited = () => {
     if (task.createdAt === task.updatedAt) {
       setWasEdited(false);
@@ -39,6 +55,7 @@ function Task({ task }) {
     }
   };
 
+  // Logic to handle the timeago component
   const dateToShow = () => {
     if (!wasEdited) {
       const formatDate = task.createdAt;
@@ -49,17 +66,20 @@ function Task({ task }) {
     }
   };
 
+  // useEffect to always be pendient of wasEdited and time state
   React.useEffect(() => {
     checkEdited();
     dateToShow();
   }, [wasEdited, task.createdAt, task.updatedAt]);
 
+  // Logic to handle the switch component
   React.useEffect(() => {
     if (task.done) {
       setChecked(true);
     }
   }, []);
 
+  // Logic to handle the check and make petitions in real time
   const handleCheckChange = async (event) => {
     setChecked(event.target.checked);
     try {
@@ -89,6 +109,7 @@ function Task({ task }) {
     }
   };
 
+  // Logic to handle the delete task petition
   const handleDelete = async () => {
     try {
       await axios.delete(`/api/tasks/${task._id}`);
@@ -105,6 +126,7 @@ function Task({ task }) {
     }
   };
 
+  // * Render the Task Component
   return (
     <Paper elevation={2} style={TaskStyles}>
       <Typography

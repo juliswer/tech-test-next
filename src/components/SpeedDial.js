@@ -1,11 +1,18 @@
+// ? Next.js Hooks
+import { useRouter } from "next/router";
+
+// ? Material UI Components
 import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
-import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
+
+// ? Material UI Icons
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import AddCircleOutlineTwoToneIcon from "@mui/icons-material/AddCircleOutlineTwoTone";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
-import {useRouter} from 'next/router';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
+// * Actions for the SpeedDial Component
 
 const actions = [
   {
@@ -13,12 +20,21 @@ const actions = [
     name: "Create a Task",
     route: "/create",
   },
-  { icon: <InfoOutlinedIcon />, name: "About the App", route: "/about" },
+  {
+    icon: <LinkedInIcon />,
+    name: "View Developer's Profile",
+    route: "https://www.github.com/juliswer",
+  },
 ];
 
+// * SpeedDial Component
+
 const SpeedDialComponent = () => {
+
+  // Initialize Router
   const router = useRouter();
 
+  // * Render the speed dial
   return (
     <Box>
       <SpeedDial
