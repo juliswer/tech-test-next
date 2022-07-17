@@ -5,13 +5,25 @@ import Task from "../components/Task";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import TaskForm from "../components/TaskForm";
+import toast from "react-hot-toast";
 
 function App() {
   const [tasks, setTasks] = React.useState([]);
 
   const getTasks = async () => {
-    const res = await axios.get("/api/tasks");
-    setTasks(res.data);
+    try {
+      const res = await axios.get("/api/tasks");
+      setTasks(res.data);
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        "Something went wrong fetching tasks! If the error persists please contact our support team.",
+        {
+          position: "top-center",
+          duration: 5000,
+        }
+      );
+    }
   };
 
   React.useEffect(() => {
