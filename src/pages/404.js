@@ -1,29 +1,23 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useLoader } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Suspense } from "react";
-
-const Model = () => {
-  const gltf = useLoader(GLTFLoader, "../3dModels/car.gltf");
-  return (
-    <mesh>
-      <primitive object={gltf.scene} />
-    </mesh>
-  );
-};
+import Car from "../3dModels/Car";
+import { OrbitControls } from "@react-three/drei";
 
 function NotFound() {
   return (
     <>
-      <Canvas>
-        <Suspense fallback={null}>
-          <Model />
+      <h2>h</h2>
+      <div style={{height: "100%", width: "100%"}}>
+        <Canvas camera={{ zoom: 30, position: [15, 20, 15] }}>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[35, 35, 0]} intensity={0.4} />
+          <pointLight position={[-35, 35, 0]} intensity={0.4} />
+          <Suspense fallback={null}>
+            <Car />
+          </Suspense>
           <OrbitControls />
-          <Environment preset="sunset" background />
-        </Suspense>
-      </Canvas>
+        </Canvas>
+      </div>
     </>
   );
 }
