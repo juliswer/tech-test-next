@@ -41,12 +41,10 @@ function Task({ task }) {
 
   const dateToShow = () => {
     if (!wasEdited) {
-      const _formatedDate = new Date(task.createdAt);
-      const formatDate = _formatedDate.toLocaleDateString("en-US");
+      const formatDate = task.createdAt;
       setShowDateTask(formatDate);
     } else {
-      const _formatedDate = new Date(task.updatedAt);
-      const formatDate = _formatedDate.toLocaleDateString("en-US");
+      const formatDate = task.updatedAt;
       setShowDateTask(formatDate);
     }
   };
