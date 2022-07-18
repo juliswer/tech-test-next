@@ -107,7 +107,9 @@ function TaskForm({ title: titleProp }) {
   return (
     <>
       <Head>
-        <title>{editedTask ? `${title} - Update ©` : `TasksJS - Create ©`}</title>
+        <title>
+          {editedTask ? `${title} - Update ©` : `TasksJS - Create ©`}
+        </title>
       </Head>
       {isLoading ? (
         <Loading />
@@ -127,6 +129,7 @@ function TaskForm({ title: titleProp }) {
           </Typography>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <TextField
+              autoFocus
               label="Title"
               variant="standard"
               color="info"
