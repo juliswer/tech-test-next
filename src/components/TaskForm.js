@@ -107,7 +107,7 @@ function TaskForm({ title: titleProp }) {
   return (
     <>
       <Head>
-        <title>{editedTask ? `${title} - Update` : `TasksJS - Create`}</title>
+        <title>{editedTask ? `${title} - Update ©` : `TasksJS - Create ©`}</title>
       </Head>
       {isLoading ? (
         <Loading />

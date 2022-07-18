@@ -48,7 +48,7 @@ function App() {
   return (
     <div>
       <Head>
-        <title>Tasks - Julian Swerdlin</title>
+        <title>Tasks - Julian Swerdlin ©</title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       {tasks.length > 0 ? (
