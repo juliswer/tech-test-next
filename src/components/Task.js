@@ -37,6 +37,7 @@ const TaskStyles = {
   backdropFilter: "blur(7.1px)",
   padding: "0px 10px 10px 10px",
   marginBottom: "10px",
+  marginInLine: "10px"
 };
 
 // * Task Component

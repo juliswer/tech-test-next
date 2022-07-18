@@ -2,7 +2,7 @@
 import React from "react";
 
 // ? Import Next Hooks
-import Head from 'next/head'
+import Head from "next/head";
 
 // ? Import Axios to make async HTTPS petitions
 import axios from "axios";
@@ -62,19 +62,13 @@ function App() {
           }}
           className="animate__animated animate__fadeInLeft"
         >
-          <Grid container>
+          <div style={{display: "flex", flexWrap: "wrap", width: "100%", justifyContent: "space-between"}}>
             {tasks.map((task) => (
-              <Grid
-                key={task._id}
-                xs={12}
-                md={6}
-                lg={3}
-                style={{ marginInline: "5px" }}
-              >
+              <div key={task.id} style={{maxWidth: "70%", marginInline: "7px", minWidth: "32%"}}>
                 <Task task={task} />
-              </Grid>
+              </div>
             ))}
-          </Grid>
+          </div>
         </Box>
       ) : (
         <div
