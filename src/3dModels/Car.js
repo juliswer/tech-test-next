@@ -1,10 +1,14 @@
-// ? Three.js Component for the 404 Page (Car)
+// ! Three.js Component for the 404 Page (Car)
 
-import React, { useRef } from "react";
+// ? Import React
+import React from "react";
+
+// ? Import Three.js Component
 import { useGLTF } from "@react-three/drei";
 
+// * Import Car Model
 export default function Car({ ...props }) {
-  const group = useRef();
+  const group = React.useRef();
   const { nodes, materials } = useGLTF("/car.gltf");
   return (
     <group ref={group} {...props} dispose={null}>
