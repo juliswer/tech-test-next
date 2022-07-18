@@ -10,7 +10,7 @@ function Loading() {
   // * Render Loading Component
   return (
     <>
-      <Box display="flex">
+      <Box display="flex"> 
         <CircularProgress />
       </Box>
     </>
