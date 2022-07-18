@@ -1,15 +1,22 @@
+// ? Import Database Connection
 import { dbConnect } from "../../../utils/mongoose";
+
+// ? Import Task Model
 import Task from "../../../models/Task";
 
+// * Database Connection
 dbConnect();
 
-export default async function hanlderId(req, res) {
+// * HandlerId
+export default async function handlerID(req, res) {
+  // ! Get req params
   const {
     method,
     body,
     query: { id },
   } = req;
 
+  // ! Handle HTTPS Requestes
   switch (method) {
     case "GET":
       try {
@@ -20,7 +27,6 @@ export default async function hanlderId(req, res) {
         return res.status(500).json({ error });
       }
     case "PUT":
-
       const bodyUpdated = {
         title: body.title,
         description: body.description,
@@ -36,7 +42,7 @@ export default async function hanlderId(req, res) {
       } catch (error) {
         return res.status(500).json({ error });
       }
-      
+
     case "DELETE":
       try {
         const task = await Task.findByIdAndDelete(id);

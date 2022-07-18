@@ -1,13 +1,18 @@
-import { Skeleton } from '@mui/material';
-import React, {Suspense} from 'react';
+// ? Import React
+import React from "react";
+
+// ? Import Loading Components and the App Layout
+import Loading from "../components/Loading";
 import App from "../layout/App";
 
+// * Index Page
 function Home() {
+  // * Render Index Page
   return (
     <>
-      <Suspense fallback={<Skeleton variant="rectangular" width={500} heigth={200} />}>
+      <React.Suspense fallback={<Loading />}>
         <App />
-      </Suspense>
+      </React.Suspense>
     </>
   );
 }

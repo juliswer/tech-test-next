@@ -1,10 +1,18 @@
+// ? Import Base Styles
 import "../styles/globals.css";
-import Layout from "../layout/Layout";
+
+// ? Import Hooks from auth0-next
 import { UserProvider } from "@auth0/nextjs-auth0";
+
+// ? Import Toaster component to initialize the librarie on the app
 import { Toaster } from "react-hot-toast";
 
-function MyApp({ Component, pageProps }) {
+// ? Import Layout
+import Layout from "../layout/Layout";
 
+// * App
+function MyApp({ Component, pageProps }) {
+  // * Render App
   return (
     <UserProvider>
       <Layout>

@@ -3,8 +3,8 @@ import React from "react";
 
 // ? Import Material UI components
 import Container from "@mui/material/Container";
-import Fab from '@mui/material/Fab';
-import GitHubIcon from '@mui/icons-material/GitHub';
+import Fab from "@mui/material/Fab";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 // ? Import Components (Header and SpeedDialComponent)
 import SpeedDialComponent from "../components/SpeedDial";
@@ -16,14 +16,14 @@ function Layout({ children }) {
   return (
     <>
       <Header />
-      <Container style={{maxWidth: "85vw"}}>{children}</Container>
+      <Container style={{ maxWidth: "85vw" }}>{children}</Container>
       <Fab
         aria-label="add"
         variant="extended"
         href="https://github.com/juliswer/tech-test-next"
         style={{ position: "fixed", bottom: "20px", left: "20px" }}
       >
-        <GitHubIcon style={{marginRight: "5px"}} />
+        <GitHubIcon style={{ marginRight: "5px" }} />
         View Source Code
       </Fab>
       <SpeedDialComponent />

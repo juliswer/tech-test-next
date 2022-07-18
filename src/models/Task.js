@@ -1,5 +1,7 @@
+// ? Import dependencies from mongoose
 import {Schema, model, models} from 'mongoose';
 
+// ? Create a new schema for the Task
 const taskSchema = new Schema({
     title: {
         type: String,
