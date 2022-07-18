@@ -1,6 +1,9 @@
 // ? Import React
 import React from "react";
 
+// ? Import Next Hooks
+import Head from "next/head";
+
 // ? Import React Three Fiber Components
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -13,7 +16,10 @@ function NotFound() {
   // * Render 404 Page
   return (
     <>
-      <div style={{ marginTop: "40px" }}>
+      <Head>
+        <title>404 - Page not found</title>
+      </Head>
+      <div style={{ marginTop: "15%" }} className="animate__animated animate__fadeIn">
         <div style={{ height: "100%", width: "100%" }}>
           <Canvas camera={{ fov: 35, zoom: 20, position: [25, 20, 15] }}>
             <ambientLight intensity={0.5} />
