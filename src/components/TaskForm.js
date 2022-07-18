@@ -19,6 +19,9 @@ import toast from "react-hot-toast";
 // ? Import Loading Component
 import Loading from "./Loading";
 
+// ? Import TaskForm Toast Config
+import { taskFormEventConfig } from "../helpers/toast_config";
+
 // * Form Styles
 const FormStyle = {
   background: "rgba(204, 204, 204, 0.40)",
@@ -68,30 +71,18 @@ function TaskForm({ title: titleProp }) {
         setIsLoading(true);
         await axios.put(`/api/tasks/${taskId}`, formValues);
         setIsLoading(false);
-        toast.success("Task updated successfully!", {
-          position: "top-center",
-          duration: 5000,
-        });
+        toast.success("Task updated successfully!", taskFormEventConfig);
       } catch (error) {
         console.log(error);
-        toast.error("Error updating task!", {
-          position: "top-center",
-          duration: 5000,
-        });
+        toast.error("Error updating task!", taskFormEventConfig);
       }
     } else {
       try {
         await axios.post("/api/tasks", formValues);
-        toast.success("Task created successfully!", {
-          position: "top-center",
-          duration: 5000,
-        });
+        toast.success("Task created successfully!", taskFormEventConfig);
       } catch (error) {
         console.log(error);
-        toast.error("Error creating task!", {
-          position: "top-center",
-          duration: 5000,
-        });
+        toast.error("Error creating task!", taskFormEventConfig);
       }
     }
     setFormValues({
@@ -110,7 +101,6 @@ function TaskForm({ title: titleProp }) {
       findTaskById();
     }
   }, [router.query.id]);
-
 
   // * Render the Form Component
   return (

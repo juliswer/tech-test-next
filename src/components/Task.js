@@ -26,6 +26,9 @@ import toast from "react-hot-toast";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
+// ? Import ToastConfig
+import { taskEventConfig } from "../helpers/toast_config";
+
 // * Styles for Task component
 const TaskStyles = {
   background: "rgba(204, 204, 204, 0.40)",
@@ -87,25 +90,19 @@ function Task({ task }) {
         done: event.target.checked,
       });
       if (event.target.checked === true) {
-        toast.success(`Great! Task "${task.title}" was finished!`, {
-          position: "bottom-center",
-          duration: 5000,
-        });
+        toast.success(
+          `Great! Task "${task.title}" was finished!`,
+          taskEventConfig
+        );
       } else {
         toast.success(
           `Task "${task.title}" was undone! I'm sure it will be done soon!`,
-          {
-            position: "bottom-center",
-            duration: 5000,
-          }
+          taskEventConfig
         );
       }
     } catch (error) {
       console.log(error);
-      toast.error("Error finishing task!", {
-        position: "bottom-center",
-        duration: 5000,
-      });
+      toast.error("Error finishing task!", taskEventConfig);
     }
   };
 
@@ -113,16 +110,10 @@ function Task({ task }) {
   const handleDelete = async () => {
     try {
       await axios.delete(`/api/tasks/${task._id}`);
-      toast.success(`Task "${task.title}" was deleted!`, {
-        position: "bottom-center",
-        duration: 5000,
-      });
+      toast.success(`Task "${task.title}" was deleted!`, taskEventConfig);
     } catch (error) {
       console.log(error);
-      toast.error("Error deleting task!", {
-        position: "bottom-center",
-        duration: 5000,
-      });
+      toast.error("Error deleting task!", taskEventConfig);
     }
   };
 
