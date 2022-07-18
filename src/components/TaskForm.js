@@ -3,6 +3,7 @@ import React from "react";
 
 // ? Import Next Hooks
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 // ? Import axios to make async https petitions
 import axios from "axios";
@@ -105,6 +106,9 @@ function TaskForm({ title: titleProp }) {
   // * Render the Form Component
   return (
     <>
+      <Head>
+        <title>{editedTask ? `${title} - Update` : `TasksJS - Create`}</title>
+      </Head>
       {isLoading ? (
         <Loading />
       ) : (

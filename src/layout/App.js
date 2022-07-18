@@ -1,6 +1,9 @@
 // ? Import React
 import React from "react";
 
+// ? Import Next Hooks
+import Head from 'next/head'
+
 // ? Import Axios to make async HTTPS petitions
 import axios from "axios";
 
@@ -44,6 +47,10 @@ function App() {
   // * Render App
   return (
     <div>
+      <Head>
+        <title>Tasks - Julian Swerdlin</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
       {tasks.length > 0 ? (
         <Box
           sx={{
