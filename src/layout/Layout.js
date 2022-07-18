@@ -1,11 +1,18 @@
+// ? Import React
 import React from "react";
+
+// ? Import Material UI components
 import Container from "@mui/material/Container";
-import Header from "../components/Header";
 import Fab from '@mui/material/Fab';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import SpeedDialComponent from "../components/SpeedDial";
 
+// ? Import Components (Header and SpeedDialComponent)
+import SpeedDialComponent from "../components/SpeedDial";
+import Header from "../components/Header";
+
+// * Layout Component
 function Layout({ children }) {
+  // * Render Layout Component
   return (
     <>
       <Header />

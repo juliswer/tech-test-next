@@ -1,15 +1,25 @@
+// ? Import React
 import React from "react";
-import Layout from "./Layout";
+
+// ? Import Axios to make async HTTPS petitions
 import axios from "axios";
-import Task from "../components/Task";
+
+// ? Import Material UI Components
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+
+// ? Import Task Components
+import Task from "../components/Task";
 import TaskForm from "../components/TaskForm";
+
+// ? Import Toastes components
 import toast from "react-hot-toast";
 
 function App() {
+  // Initialize State
   const [tasks, setTasks] = React.useState([]);
 
+  // Logic to get tasks from the API
   const getTasks = async () => {
     try {
       const res = await axios.get("/api/tasks");
@@ -26,10 +36,12 @@ function App() {
     }
   };
 
+  // useEffect to get tasks when the component is mounted
   React.useEffect(() => {
     getTasks();
   }, [tasks]);
 
+  // * Render App
   return (
     <div>
       {tasks.length > 0 ? (

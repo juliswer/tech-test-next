@@ -23,7 +23,7 @@ const actions = [
   {
     icon: <LinkedInIcon />,
     name: "View Developer's Profile",
-    route: "https://www.github.com/juliswer",
+    route: "https://www.linkedin.com/in/julian-swerdlin/",
   },
 ];
 
