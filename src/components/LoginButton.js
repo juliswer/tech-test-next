@@ -35,6 +35,13 @@ function LoginButton() {
   // Initialize Auth0 Hooks
   const { user, isLoading, error } = useUser();
 
+  // useEffect to get handle the connection error
+  React.useEffect(() => {
+    if (error) {
+      toast.error;
+    }
+  }, [error]);
+
   // * Render and save the user data (provided by auth0) and save it in the localStorage
   const setUserData = () => {
     if (user) {
@@ -55,7 +62,6 @@ function LoginButton() {
   React.useEffect(() => {
     setUserData();
   }, [user]);
-
 
   // * Render the Login/Logout Button
   return (
