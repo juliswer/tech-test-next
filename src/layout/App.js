@@ -64,7 +64,7 @@ function App() {
         >
           <div style={{display: "flex", flexWrap: "wrap", width: "100%", justifyContent: "space-between"}}>
             {tasks.map((task) => (
-              <div key={task.id} style={{maxWidth: "70%", marginInline: "7px", minWidth: "32%"}}>
+              <div key={task._id} style={{maxWidth: "70%", marginInline: "7px", minWidth: "32%"}}>
                 <Task task={task} />
               </div>
             ))}
