@@ -35,7 +35,7 @@ function Header() {
   };
 
 
-  // ! Render the Header
+  // * Render the Header
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{ background: "#560032" }} className="animate__animated animate__fadeInDown">
