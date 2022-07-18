@@ -16,6 +16,7 @@
     "@mui/material": "^5.9.0",
     "@react-three/drei": "^9.17.1",
     "@react-three/fiber": "^8.2.0",
+    "animate.css": "^4.1.1",
     "axios": "^0.27.2",
     "mongoose": "^6.4.4",
     "next": "12.2.2",

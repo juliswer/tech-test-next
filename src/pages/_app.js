@@ -1,6 +1,9 @@
 // ? Import Base Styles
 import "../styles/globals.css";
 
+// ? Import Animate Styles
+import "animate.css";
+
 // ? Import Hooks from auth0-next
 import { UserProvider } from "@auth0/nextjs-auth0";
 

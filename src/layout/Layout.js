@@ -19,6 +19,7 @@ function Layout({ children }) {
       <Container style={{ maxWidth: "85vw" }}>{children}</Container>
       <Fab
         aria-label="add"
+        className="animate__animated animate__fadeInLeft"
         variant="extended"
         href="https://github.com/juliswer/tech-test-next"
         style={{ position: "fixed", bottom: "20px", left: "20px" }}

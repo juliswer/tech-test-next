@@ -38,6 +38,7 @@ const SpeedDialComponent = () => {
   return (
     <Box>
       <SpeedDial
+        className="animate__animated animate__fadeInRight"
         ariaLabel="Notes Button"
         sx={{ position: "absolute", bottom: 16, right: 16 }}
         icon={<SpeedDialIcon openIcon={<CreateOutlinedIcon />} />}

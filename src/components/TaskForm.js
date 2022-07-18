@@ -112,7 +112,7 @@ function TaskForm({ title: titleProp }) {
       {isLoading ? (
         <Loading />
       ) : (
-        <Paper style={FormStyle}>
+        <Paper style={FormStyle} className="animate__animated animate__fadeIn">
           <Typography
             variant="h4"
             component="h4"

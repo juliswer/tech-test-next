@@ -60,6 +60,7 @@ function App() {
             justifyContent: "center",
             marginTop: "20px",
           }}
+          className="animate__animated animate__fadeInLeft"
         >
           <Grid container>
             {tasks.map((task) => (
